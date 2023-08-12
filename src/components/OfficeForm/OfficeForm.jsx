@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import PropTypes from "prop-types";
-import css from './OfficeForm.module.css'
 import { getPostOffices } from '../../services/api';
-import { showErrorMessage } from '../notifications/Toast';
+import { showErrorMessage, showSuccessMessage } from '../../notifications/Toast';
+import css from './OfficeForm.module.css'
 
 const OfficeForm = ({ setPostOffices, setIsLoading }) => {
     const [city, setCity] = useState('');
@@ -30,6 +30,7 @@ const OfficeForm = ({ setPostOffices, setIsLoading }) => {
             const data = response.data;
             setPostOffices(data);
             setCity("")
+            showSuccessMessage("Receiving the list of offices successful")
         } catch (error) {
             console.error('Error fetching post offices:', error);
             showErrorMessage("Error fetching post offices. Try again later")

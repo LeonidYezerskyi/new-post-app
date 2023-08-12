@@ -9,9 +9,18 @@
   padding: 10px 10px;
 }
 
+.listItem {
+  padding-bottom: 15px;
+}
+
 .text {
   font-size: 16px;
   letter-spacing: 1;
   font-weight: 600;
   color: black;
+}
+
+.text:hover {
+  color: #f23c32;
+  cursor: pointer;
 }
