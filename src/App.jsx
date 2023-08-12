@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
+import cn from 'classnames';
 
 import css from './App.module.css'
 
@@ -12,10 +13,12 @@ function App() {
   return (
     <div>
       <nav className={css.header}>
-        <NavLink to='/' >
+        <NavLink to='/' className={({ isActive }) =>
+          cn(css.tabPage, { [css.active]: isActive, })}>
           Check TTN
         </NavLink>
-        <NavLink to='/offices' >
+        <NavLink to='/offices' className={({ isActive }) =>
+          cn(css.tabPage, { [css.active]: isActive, })}>
           Offices
         </NavLink>
       </nav>
