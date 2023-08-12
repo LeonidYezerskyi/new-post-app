@@ -2,9 +2,9 @@ import css from './OfficesList.module.css'
 
 const OfficesList = () => {
     return (
-        <div>
-            <h2>Offices&apos; list</h2>
-            <ul>
+        <div className={css.listContainer}>
+            <h1 className={css.title}>List of branches</h1>
+            <ul className={css.listWrapper}>
                 <li >Description</li>
             </ul>
         </div>

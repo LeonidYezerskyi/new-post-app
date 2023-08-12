@@ -2,12 +2,10 @@ import css from './TrackingResult.module.css'
 
 const TrackingResult = () => {
     return (
-        <div>
-            <div>
-                <p>Delivery status: </p>
-                <p>Sent: </p>
-                <p>Received: </p>
-            </div>
+        <div className={css.resultWrapper}>
+            <p className={css.text}>Delivery status: <span>Received</span></p>
+            <p className={css.text}>Sent: <span>Yesterday</span></p>
+            <p className={css.text}>Received: <span>Today</span></p>
         </div>
     )
 }
