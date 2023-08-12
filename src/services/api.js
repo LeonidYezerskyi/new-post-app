@@ -1,25 +1,16 @@
 import axios from "axios";
 
-export const fetchPostOffices = async () => {
-  try {
-    const response = await axios.get(
-      "https://api.novaposhta.ua/v2.0/json/Address/general",
-      {
-        params: {
-          apiKey: "769e4708f8ca021b4293a8d4ab24ff6b",
-          modelName: "AddressGeneral",
-          calledMethod: "getWarehouses",
-          methodProperties: {
-            Page: "1",
-            Limit: "20",
-            Language: "en",
-          },
-        },
-      }
-    );
-
-    return response;
-  } catch (error) {
-    console.error("Error fetching post offices:", error);
-  }
+export const getPostOffices = async (city = "") => {
+  const { data } = await axios.post("https://api.novaposhta.ua/v2.0/json/", {
+    apiKey: "8471b5b7a27be0e5969b94d3c895d7cb",
+    modelName: "Address",
+    calledMethod: "getWarehouses",
+    methodProperties: {
+      CityName: `${city}`,
+      Page: "1",
+      Limit: "30",
+      Language: "en",
+    },
+  });
+  return data;
 };
