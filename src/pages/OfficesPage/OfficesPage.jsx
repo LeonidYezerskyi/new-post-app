@@ -13,6 +13,7 @@ const OfficesPage = () => {
                 <h1 className={css.title}>List of branches</h1>
                 <OfficeForm setPostOffices={setPostOffices} setIsLoading={setIsLoading} />
             </div>
+
             <OfficesList postOffices={postOffices} isLoading={isLoading} />
         </div>
     )
