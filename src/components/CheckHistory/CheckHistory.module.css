@@ -1,0 +1,17 @@
+.historyWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 381px;
+  height: 230px;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 10px 10px;
+}
+
+.text {
+  font-size: 16px;
+  letter-spacing: 1;
+  font-weight: 600;
+  color: black;
+}

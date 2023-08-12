@@ -1,0 +1,10 @@
+.homeContainer {
+  background-color: #f8f2f2;
+  padding: 30px;
+}
+
+.resultWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}

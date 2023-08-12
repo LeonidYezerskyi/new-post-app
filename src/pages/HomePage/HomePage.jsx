@@ -5,11 +5,13 @@ import css from './HomePage.module.css'
 
 const HomePage = () => {
     return (
-        <>
+        <div className={css.homeContainer}>
             <TrackingForm />
-            <TrackingResult />
-            <CheckHistory />
-        </>
+            <div className={css.resultWrapper}>
+                <TrackingResult />
+                <CheckHistory />
+            </div>
+        </div>
     )
 }
 

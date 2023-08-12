@@ -1,8 +1,6 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
   text-align: center;
 }
 
@@ -13,7 +11,6 @@
   gap: 30px;
   padding: 20px 50px;
   border-bottom: 2px solid #f23c32;
-  box-shadow: 0 1px 2px #b9b9b9;
   background-color: #f8f2f2;
 }
 
@@ -29,10 +26,24 @@
   border-radius: 5px 5px 5px 5px;
   transition: all 0.3s;
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: #ff0d00;
+    border-color: #ff0d00;
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 0.8px #f23c32;
+  }
 }
 
 .tabPage.active {
   background-color: #f23c32;
   color: #ffffff;
   border: 2px solid #f23c32;
+
+  &:hover,
+  &:focus {
+    background-color: #ff0d00;
+    border-color: #ff0d00;
+  }
 }
