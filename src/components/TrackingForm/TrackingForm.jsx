@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import css from './TrackingForm.module.css'
+import { showErrorMessage } from '../notifications/Toast';
 
 const TrackingForm = ({ onTrack }) => {
     const [ttnNumber, setTtnNumber] = useState('');
@@ -9,7 +11,10 @@ const TrackingForm = ({ onTrack }) => {
     };
 
     const handleTrack = () => {
-        onTrack(ttnNumber);
+        if (ttnNumber) { onTrack(ttnNumber) }
+        else {
+            showErrorMessage("Please write an invoice number")
+        }
     };
 
     return (
@@ -25,5 +30,9 @@ const TrackingForm = ({ onTrack }) => {
         </div>
     )
 }
+
+TrackingForm.propTypes = {
+    onTrack: PropTypes.func.isRequired,
+};
 
 export default TrackingForm

@@ -23,7 +23,6 @@ export const trackDelivery = async (ttnNumber = "") => {
       Documents: [{ DocumentNumber: `${ttnNumber}` }],
     },
   });
-  console.log("🚀 ~ file: api.js:31 ~ trackDelivery ~ response:", data);
 
   return data.data[0];
 };
