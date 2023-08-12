@@ -5,14 +5,15 @@ import css from './OfficesPage.module.css'
 
 const OfficesPage = () => {
     const [postOffices, setPostOffices] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     return (
         <div>
             <div className={css.menuWrapper}>
                 <h1 className={css.title}>List of branches</h1>
-                <OfficeForm setPostOffices={setPostOffices} />
+                <OfficeForm setPostOffices={setPostOffices} setIsLoading={setIsLoading} />
             </div>
-            <OfficesList postOffices={postOffices} />
+            <OfficesList postOffices={postOffices} isLoading={isLoading} />
         </div>
     )
 }

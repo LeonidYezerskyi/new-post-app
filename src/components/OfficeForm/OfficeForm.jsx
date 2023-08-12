@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import css from './OfficeForm.module.css'
 import { getPostOffices } from '../../services/api';
 
-const OfficeForm = ({ setPostOffices }) => {
+const OfficeForm = ({ setPostOffices, setIsLoading }) => {
     const [city, setCity] = useState('');
 
     const handleChange = (event) => {
@@ -17,12 +17,16 @@ const OfficeForm = ({ setPostOffices }) => {
 
     const fetchPostOffices = async () => {
         try {
+            setIsLoading(true);
+
             const response = await getPostOffices(city);
             const data = response.data;
             setPostOffices(data);
             setCity("")
         } catch (error) {
             console.error('Error fetching post offices:', error);
+        } finally {
+            setIsLoading(false);
         }
 
     };
