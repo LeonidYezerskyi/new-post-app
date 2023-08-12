@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import css from './CheckHistory.module.css'
 
-const CheckHistory = () => {
+const CheckHistory = ({ onSelectHistoryItem }) => {
     const history = useSelector(state => state.history);
 
     return (
@@ -9,7 +10,7 @@ const CheckHistory = () => {
             <h2>History</h2>
             <ul>
                 {history.map((item, index) => (
-                    <li className={css.listItem} key={index}>
+                    <li className={css.listItem} key={index} onClick={() => onSelectHistoryItem(item.ttnNumber)}>
                         <span className={css.text}>{index + 1}. {item.ttnNumber}</span>
                     </li>
                 ))}
@@ -17,5 +18,9 @@ const CheckHistory = () => {
         </div>
     )
 }
+
+CheckHistory.propTypes = {
+    onSelectHistoryItem: PropTypes.func.isRequired,
+};
 
 export default CheckHistory
