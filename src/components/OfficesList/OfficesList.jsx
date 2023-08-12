@@ -1,11 +1,15 @@
 import PropTypes from "prop-types";
 import css from './OfficesList.module.css'
+import Loader from "../Loader/Loader";
 
-const OfficesList = ({ postOffices }) => {
+const OfficesList = ({ postOffices, isLoading }) => {
 
     return (
         <div className={css.listContainer}>
+
             <ul className={css.listWrapper}>
+                {isLoading && <Loader />}
+
                 {postOffices.map(postOffice => {
                     return (
                         < li key={postOffice.Number}>
@@ -25,6 +29,7 @@ OfficesList.propTypes = {
         CityDescription: PropTypes.string.isRequired,
         SettlementAreaDescription: PropTypes.string.isRequired,
     })).isRequired,
+    isLoading: PropTypes.bool.isRequired,
 }
 
 export default OfficesList
