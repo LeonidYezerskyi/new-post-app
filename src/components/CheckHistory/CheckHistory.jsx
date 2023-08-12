@@ -10,7 +10,7 @@ const CheckHistory = () => {
             <ul>
                 {history.map((item, index) => (
                     <li className={css.listItem} key={index}>
-                        <span className={css.text}>{index + 1}. {item}</span>
+                        <span className={css.text}>{index + 1}. {item.ttnNumber}</span>
                     </li>
                 ))}
             </ul>
