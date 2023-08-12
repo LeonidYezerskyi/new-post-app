@@ -1,5 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+
 import cn from 'classnames';
 
 import css from './App.module.css'
@@ -31,6 +33,8 @@ function App() {
             <Route path="/*" element={<LazyNotFoundPage />} />
           </Routes>
         </Suspense>
+        <ToastContainer />
+
       </>
     </div>
   )

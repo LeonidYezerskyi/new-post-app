@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PropTypes from "prop-types";
 import css from './OfficeForm.module.css'
 import { getPostOffices } from '../../services/api';
+import { showErrorMessage } from '../notifications/Toast';
 
 const OfficeForm = ({ setPostOffices, setIsLoading }) => {
     const [city, setCity] = useState('');
@@ -12,7 +13,13 @@ const OfficeForm = ({ setPostOffices, setIsLoading }) => {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        await fetchPostOffices();
+
+        if (city) {
+            await fetchPostOffices();
+        }
+        else {
+            showErrorMessage("Please select a city")
+        }
     }
 
     const fetchPostOffices = async () => {
@@ -25,6 +32,7 @@ const OfficeForm = ({ setPostOffices, setIsLoading }) => {
             setCity("")
         } catch (error) {
             console.error('Error fetching post offices:', error);
+            showErrorMessage("Error fetching post offices. Try again later")
         } finally {
             setIsLoading(false);
         }
@@ -46,7 +54,8 @@ const OfficeForm = ({ setPostOffices, setIsLoading }) => {
 }
 
 OfficeForm.propTypes = {
-    setPostOffices: PropTypes.func.isRequired
+    setPostOffices: PropTypes.func.isRequired,
+    setIsLoading: PropTypes.func.isRequired,
 }
 
 export default OfficeForm
