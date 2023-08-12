@@ -5,20 +5,23 @@ import Loader from "../Loader/Loader";
 const OfficesList = ({ postOffices, isLoading }) => {
 
     return (
-        <div className={css.listContainer}>
+        <div className={css.listSection}>
+            {postOffices.length === 0 && (<p className={css.noItem}>No branches have been selected here yet</p>)}
+            {isLoading && <Loader />}
 
-            <ul className={css.listWrapper}>
-                {isLoading && <Loader />}
+            {postOffices.length > 0 && <div className={css.listContainer}>
+                <ul className={css.listWrapper}>
 
-                {postOffices.map(postOffice => {
-                    return (
-                        < li key={postOffice.Number}>
-                            <p>{postOffice.Description}</p>
-                            <p>{postOffice.CityDescription}, {postOffice.SettlementAreaDescription}</p>
-                        </li>)
-                })}
-            </ul>
-        </div >
+                    {postOffices.map((postOffice, index) => {
+                        return (
+                            < li key={postOffice.Number}>
+                                <p className={css.listItem}>{index + 1}. {postOffice.Description}, {postOffice.CityDescription}, {postOffice.SettlementAreaDescription}</p>
+                            </li>)
+                    })}
+                </ul>
+            </div >}
+        </div>
+
     )
 }
 

@@ -7,9 +7,7 @@ export const getPostOffices = async (city = "") => {
     calledMethod: "getWarehouses",
     methodProperties: {
       CityName: `${city}`,
-      Page: "1",
-      Limit: "30",
-      Language: "en",
+      Language: "ua",
     },
   });
   return data;
