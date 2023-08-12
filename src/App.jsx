@@ -13,10 +13,10 @@ function App() {
     <div>
       <nav className={css.header}>
         <NavLink to='/' >
-          Home
+          Check TTN
         </NavLink>
         <NavLink to='/offices' >
-          List of offices
+          Offices
         </NavLink>
       </nav>
 

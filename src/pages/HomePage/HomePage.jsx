@@ -1,8 +1,15 @@
+import CheckHistory from '../../components/CheckHistory/CheckHistory'
+import TrackingForm from '../../components/TrackingForm/TrackingForm'
+import TrackingResult from '../../components/TrackingResult/TrackingResult'
 import css from './HomePage.module.css'
 
 const HomePage = () => {
     return (
-        <div>HomePage</div>
+        <>
+            <TrackingForm />
+            <TrackingResult />
+            <CheckHistory />
+        </>
     )
 }
 
