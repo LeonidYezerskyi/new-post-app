@@ -1,8 +1,13 @@
 .formWrapper {
   display: flex;
   align-items: center;
+  flex-direction: column;
   gap: 20px;
   padding-bottom: 30px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
 .input {
