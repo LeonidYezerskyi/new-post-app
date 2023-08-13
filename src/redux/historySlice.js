@@ -19,9 +19,13 @@ const historySlice = createSlice({
         localStorage.setItem("history", JSON.stringify(state));
       }
     },
+    clearHistory: (state) => {
+      state.splice(0, state.length);
+      localStorage.removeItem("history");
+    },
   },
 });
 
-export const { addToHistory } = historySlice.actions;
+export const { addToHistory, clearHistory } = historySlice.actions;
 
 export default historySlice.reducer;

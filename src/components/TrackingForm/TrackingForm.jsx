@@ -1,18 +1,32 @@
 import PropTypes from 'prop-types';
 import { showErrorMessage } from '../../notifications/Toast';
 import css from './TrackingForm.module.css'
+import { useState } from 'react';
 
 const TrackingForm = ({ onTrack, ttnNumber, setTtnNumber }) => {
+    const [isValidTtn, setIsValidTtn] = useState(false);
 
     const handleInputChange = (e) => {
-        setTtnNumber(e.target.value);
+        const inputTtnNumber = e.target.value;
+        setTtnNumber(inputTtnNumber);
+        validateTtnNumber(inputTtnNumber);
     };
 
-    const handleTrack = () => {
-        if (ttnNumber) { onTrack(ttnNumber) }
-        else {
-            showErrorMessage("Please write an invoice number")
+    const handleTrack = (e) => {
+        e.preventDefault();
+
+        if (isValidTtn && ttnNumber.trim() !== '') {
+            onTrack(ttnNumber);
+        } else {
+            setTtnNumber("");
+            return showErrorMessage("An invoice number must contain 11-14 digits without spaces");
         }
+    };
+
+    const validateTtnNumber = (inputTtnNumber) => {
+        const ttnPattern = /^[0-9]{11,14}$/;
+
+        setIsValidTtn(ttnPattern.test(inputTtnNumber));
     };
 
     return (

@@ -10,7 +10,6 @@ export const getPostOffices = async (city = "") => {
       Language: "ua",
     },
   });
-
   return data;
 };
 
