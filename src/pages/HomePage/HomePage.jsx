@@ -45,6 +45,7 @@ const HomePage = () => {
     };
 
     const handleHistoryItemClick = (ttnNumber) => {
+
         setTtnNumber(ttnNumber);
         handleTrack(ttnNumber);
     };

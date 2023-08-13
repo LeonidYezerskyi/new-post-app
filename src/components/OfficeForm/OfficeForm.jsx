@@ -41,6 +41,7 @@ const OfficeForm = ({ setPostOffices, setIsLoading }) => {
 
             if (data.length === 0) {
                 setCity("");
+                setPostOffices("");
                 return showErrorMessage("Couldn't find any offices in such city")
             }
 
