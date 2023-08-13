@@ -1,9 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-
 import cn from 'classnames';
-
 import css from './App.module.css'
 
 const LazyHomePage = lazy(() => import("./pages/HomePage/HomePage"));
@@ -14,16 +12,18 @@ function App() {
 
   return (
     <div>
-      <nav className={css.header}>
-        <NavLink to='/' className={({ isActive }) =>
-          cn(css.tabPage, { [css.active]: isActive, })}>
-          Check TTN
-        </NavLink>
-        <NavLink to='/offices' className={({ isActive }) =>
-          cn(css.tabPage, { [css.active]: isActive, })}>
-          Offices
-        </NavLink>
-      </nav>
+      <div className={css.headerWrapper}>
+        <nav className={css.header}>
+          <NavLink to='/' className={({ isActive }) =>
+            cn(css.tabPage, { [css.active]: isActive, })}>
+            Check TTN
+          </NavLink>
+          <NavLink to='/offices' className={({ isActive }) =>
+            cn(css.tabPage, { [css.active]: isActive, })}>
+            Offices
+          </NavLink>
+        </nav>
+      </div>
 
       <>
         <Suspense>
