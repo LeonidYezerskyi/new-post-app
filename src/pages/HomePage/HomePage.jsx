@@ -20,6 +20,11 @@ const HomePage = () => {
 
             const status = await trackDelivery(ttnNumber);
 
+            if (status === undefined) {
+                setTrackingStatus(null);
+                return showErrorMessage("Document number is not correct")
+            }
+
             if (status.StatusCode === "3") {
                 setTrackingStatus(null);
                 return showErrorMessage("No package has been sent under this invoice number")

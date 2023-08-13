@@ -11,7 +11,7 @@ const LazyNotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"))
 function App() {
 
   return (
-    <div>
+    <div className={css.mainContainer}>
       <div className={css.headerWrapper}>
         <nav className={css.header}>
           <NavLink to='/' className={({ isActive }) =>
