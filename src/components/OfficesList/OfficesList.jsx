@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import css from './OfficesList.module.css'
 import Loader from "../Loader/Loader";
+import css from './OfficesList.module.css'
 
 const OfficesList = ({ postOffices, isLoading }) => {
 
