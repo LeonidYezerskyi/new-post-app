@@ -5,7 +5,6 @@ import css from './CheckHistory.module.css'
 
 const CheckHistory = ({ onSelectHistoryItem }) => {
     const dispatch = useDispatch();
-
     const history = useSelector(state => state.history);
 
     const handleClick = () => { dispatch(clearHistory()) };

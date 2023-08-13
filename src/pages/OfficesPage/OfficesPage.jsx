@@ -8,7 +8,7 @@ const OfficesPage = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     return (
-        <div>
+        <div className={css.officesContainer}>
             <div className={css.menuWrapper}>
                 <h1 className={css.title}>List of branches</h1>
                 <OfficeForm setPostOffices={setPostOffices} setIsLoading={setIsLoading} />
