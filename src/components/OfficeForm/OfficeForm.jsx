@@ -6,19 +6,29 @@ import css from './OfficeForm.module.css'
 
 const OfficeForm = ({ setPostOffices, setIsLoading }) => {
     const [city, setCity] = useState('');
+    const [isValidСity, setIsValidCity] = useState(false);
 
     const handleChange = (event) => {
-        setCity(event.target.value)
+        const cityInput = event.target.value;
+        setCity(cityInput);
+        validateCity(cityInput);
     }
+
+    const validateCity = (cityInput) => {
+        const cityPattern = /^[А-Яа-яЇїІіЄєҐґ\s']+$/;
+
+        setIsValidCity(cityPattern.test(cityInput));
+    };
 
     const handleClick = async (e) => {
         e.preventDefault();
 
-        if (city) {
+        if (city && isValidСity) {
             await fetchPostOffices();
         }
         else {
-            showErrorMessage("Please select a city")
+            setCity("");
+            showErrorMessage("Choose the correct city name. Only the Ukrainian language, no digits")
         }
     }
 
@@ -28,6 +38,12 @@ const OfficeForm = ({ setPostOffices, setIsLoading }) => {
 
             const response = await getPostOffices(city);
             const data = response.data;
+
+            if (data.length === 0) {
+                setCity("");
+                return showErrorMessage("Couldn't find any offices in such city")
+            }
+
             setPostOffices(data);
             setCity("")
             showSuccessMessage("Receiving the list of offices successful")

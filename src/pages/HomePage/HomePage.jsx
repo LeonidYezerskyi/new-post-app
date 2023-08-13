@@ -4,7 +4,7 @@ import { trackDelivery } from '../../services/api'
 import CheckHistory from '../../components/CheckHistory/CheckHistory'
 import TrackingForm from '../../components/TrackingForm/TrackingForm'
 import TrackingResult from '../../components/TrackingResult/TrackingResult'
-import { showSuccessMessage } from '../../notifications/Toast'
+import { showErrorMessage, showSuccessMessage } from '../../notifications/Toast'
 import { addToHistory } from '../../redux/historySlice';
 import css from './HomePage.module.css'
 
@@ -19,8 +19,17 @@ const HomePage = () => {
             setIsLoading(true)
 
             const status = await trackDelivery(ttnNumber);
+
+            if (status.StatusCode === "3") {
+                setTrackingStatus(null);
+                return showErrorMessage("No package has been sent under this invoice number")
+            }
+
+            if (status) { showSuccessMessage("Status details received successfully") }
+            else { return showErrorMessage("No package has been sent under this invoice number") }
+
+
             setTrackingStatus(status);
-            showSuccessMessage("Status details received successfully")
             dispatch(addToHistory(ttnNumber));
         } catch (error) {
             console.error('Error tracking:', error);
